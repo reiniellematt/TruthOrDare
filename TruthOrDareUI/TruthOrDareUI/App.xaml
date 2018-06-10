@@ -20,9 +20,9 @@
             </Style>
 
             <Style TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource MainButtonColor}"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>
-            
         </ResourceDictionary>
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>

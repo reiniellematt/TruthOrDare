@@ -24,6 +24,10 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource MainButtonColor}"/>
                 <Setter Property="TextColor" Value="White"/>
             </Style>
+
+            <Style TargetType="Entry">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
         </ResourceDictionary>
     </prism:PrismApplication.Resources>
 </prism:PrismApplication>

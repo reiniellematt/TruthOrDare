@@ -3,9 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
              x:Class="TruthOrDareUI.App">
-    <Application.Resources>
+    <prism:PrismApplication.Resources>
 
         <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="MainBackgroundColor">#2C3E50</Color>
+            <Color x:Key="MainButtonColor">#2ECC71</Color>
+            <Color x:Key="SecondaryTextColor">#E74C3C</Color>
 
-    </Application.Resources>
+            <Style TargetType="StackLayout">
+                <Setter Property="BackgroundColor" Value="{StaticResource MainBackgroundColor}"/>
+            </Style>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+            
+        </ResourceDictionary>
+    </prism:PrismApplication.Resources>
 </prism:PrismApplication>

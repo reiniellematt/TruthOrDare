@@ -12,6 +12,7 @@
             <Color x:Key="SecondaryTextColor">#E74C3C</Color>
 
             <Style TargetType="StackLayout">
+                <Setter Property="Padding" Value="12"/>
                 <Setter Property="BackgroundColor" Value="{StaticResource MainBackgroundColor}"/>
             </Style>
 

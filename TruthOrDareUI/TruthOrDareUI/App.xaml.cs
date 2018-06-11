@@ -24,7 +24,7 @@ namespace TruthOrDareUI
         {
             InitializeComponent();
             
-            await NavigationService.NavigateAsync("NavigationPage/SettingsPage");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

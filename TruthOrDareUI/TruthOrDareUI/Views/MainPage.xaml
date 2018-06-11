@@ -12,10 +12,10 @@
             <Label TextColor="{StaticResource SecondaryTextColor}" FontSize="36" Text="Dare"/>
         </StackLayout>
 
-        <Button MinimumWidthRequest="150" MinimumHeightRequest="150" HorizontalOptions="Center" BorderRadius="50" FontAttributes="Bold" FontSize="28" Text="START" Margin="0,124,0,0"/>
+        <Button MinimumWidthRequest="150" MinimumHeightRequest="150" HorizontalOptions="Center" VerticalOptions="Center" BorderRadius="50" FontAttributes="Bold" FontSize="28" Text="START" Margin="0,56,0,0"/>
 
-        <Button BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="20" Text="Settings" Margin="0,52,0,0"/>
-        <Button BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="20" Text="About" Margin="0,52,0,0"/>
+        <Button Command="{Binding NavigateCommand}" CommandParameter="SettingsPage" BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="20" Text="Settings" Margin="0,24,0,0"/>
+        <Button Command="{Binding NavigateCommand}" CommandParameter="AboutPage" BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="20" Text="About" Margin="0,24,0,0"/>
     </StackLayout>
 
 </ContentPage>

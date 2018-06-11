@@ -19,22 +19,22 @@
             <Label FontSize="20" Text="Reinielle Matt"/>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" Margin="0,36,0,0">
+        <StackLayout Orientation="Horizontal" Margin="0,24,0,0">
             <Label TextColor="{StaticResource SecondaryTextColor}" FontSize="18" Text="Designed by:"/>
             <Label FontSize="20" Text="Angeli Maureen"/>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" Margin="0,36,0,0">
+        <StackLayout Orientation="Horizontal" Margin="0,24,0,0">
             <Label TextColor="{StaticResource SecondaryTextColor}" FontSize="18" Text="Created with:"/>
             <Label FontSize="20" Text="Xamarin.Forms"/>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" Margin="0,36,0,0">
+        <StackLayout Orientation="Horizontal" Margin="0,24,0,0">
             <Label TextColor="{StaticResource SecondaryTextColor}" FontSize="18" Text="Project hosted at:"/>
             <Label FontSize="20" Text="GitHub"/>
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" Margin="0,36,0,0">
+        <StackLayout Orientation="Horizontal" Margin="0,24,0,0">
             <Label TextColor="{StaticResource SecondaryTextColor}" FontSize="18" Text="Icons by:"/>
             <Label FontSize="20" Text="Icons8"/>
         </StackLayout>

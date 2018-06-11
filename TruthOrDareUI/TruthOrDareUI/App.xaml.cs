@@ -23,7 +23,8 @@ namespace TruthOrDareUI
         protected override async void OnInitialized()
         {
             InitializeComponent();
-            
+            GlobalConfig.PrepareContents();
+
             await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 

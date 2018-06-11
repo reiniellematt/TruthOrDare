@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TruthOrDareUI
 {
@@ -40,6 +41,34 @@ namespace TruthOrDareUI
                 for (int i = 3; i < contents.Length; i++)
                 {
                     PlayersFromLastSession.Add(contents[i]);
+                }
+            }
+        }
+
+        public static async Task SaveConfig(string minutes = null, string seconds = null, List<string> names = null)
+        {
+            List<string> contents = new List<string>();
+
+            if (minutes.Length > 0)
+            {
+                contents.Add(minutes);
+            }
+
+            if (seconds.Length > 0)
+            {
+                contents.Add(seconds);
+            }
+
+            if (names != null)
+            {
+                contents.AddRange(names);
+            }
+
+            using (StreamWriter sw = new StreamWriter(filePath, false))
+            {
+                foreach (string content in contents)
+                {
+                    await sw.WriteLineAsync(content);
                 }
             }
         }

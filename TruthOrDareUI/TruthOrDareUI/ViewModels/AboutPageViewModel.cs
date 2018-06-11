@@ -23,7 +23,7 @@ namespace TruthOrDareUI.ViewModels
 
         private async void ExecuteReturnCommand()
         {
-            await _navigationService.NavigateAsync("MainPage");
+            await _navigationService.GoBackAsync();
         }
     }
 }

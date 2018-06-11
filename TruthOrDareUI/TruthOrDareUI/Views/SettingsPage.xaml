@@ -9,14 +9,14 @@
     <StackLayout>
         
         <Label TextColor="{StaticResource SecondaryTextColor}" FontSize="20" Text="Minutes to Complete the Challenge" Margin="0,62,0,0"/>
-        <Entry HorizontalOptions="Start" MinimumWidthRequest="38" FontSize="20" Text="2"/>
+        <Entry HorizontalOptions="Start" MinimumWidthRequest="38" FontSize="20" Text="{Binding MinutesToCompleteChallengeEntry}"/>
 
         <Label TextColor="{StaticResource SecondaryTextColor}" FontSize="20" Text="Seconds Before Reveal" Margin="0,12,0,0"/>
-        <Entry HorizontalOptions="Start" MinimumWidthRequest="38" FontSize="20" Text="2"/>
+        <Entry HorizontalOptions="Start" MinimumWidthRequest="38" FontSize="20" Text="{Binding SecondsBeforeRevealEntry}"/>
         
         <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="EndAndExpand">
-            <Button FontSize="20" Text="Save"/>
-            <Button FontSize="20" Text="Cancel"/>
+            <Button Command="{Binding SaveCommand}" FontSize="20" Text="Save"/>
+            <Button Command="{Binding CancelCommand}" FontSize="20" Text="Cancel"/>
         </StackLayout>
             
     </StackLayout>

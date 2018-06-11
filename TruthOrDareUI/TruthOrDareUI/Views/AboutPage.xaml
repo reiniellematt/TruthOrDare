@@ -39,7 +39,7 @@
             <Label FontSize="20" Text="Icons8"/>
         </StackLayout>
         
-        <Button HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Text="RETURN" Margin="0,0,0,12"/>
+        <Button Command="{Binding ReturnCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Text="RETURN" Margin="0,0,0,12"/>
         
     </StackLayout>
     

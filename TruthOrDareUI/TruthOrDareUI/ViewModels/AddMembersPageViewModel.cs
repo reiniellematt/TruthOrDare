@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -9,14 +10,15 @@ namespace TruthOrDareUI.ViewModels
 {
     public class AddMembersPageViewModel : BindableBase
     {
-        private ObservableCollection<string> _names = new ObservableCollection<string>();
+        private INavigationService _navigationService;
+
         private string _newNameEntry;
         private DelegateCommand _addCommand;
+        private DelegateCommand _nextCommand;
 
         public ObservableCollection<string> Names
         {
-            get { return _names; }
-            set { SetProperty(ref _names, value); }
+            get { return GlobalConfig.PlayersFromLastSession; }
         }
         public string NewNameEntry
         {
@@ -24,26 +26,25 @@ namespace TruthOrDareUI.ViewModels
             set { SetProperty(ref _newNameEntry, value); }
         }
         public DelegateCommand AddCommand => _addCommand ?? (_addCommand = new DelegateCommand(ExecuteAddCommand));
+        public DelegateCommand NextCommand => _nextCommand ?? (_nextCommand = new DelegateCommand(ExecuteNextCommand));
 
-        public AddMembersPageViewModel()
+        public AddMembersPageViewModel(INavigationService navigationService)
         {
-            LoadSampleData();
+            _navigationService = navigationService;
         }
 
         private void ExecuteAddCommand()
         {
             if (!string.IsNullOrWhiteSpace(NewNameEntry))
             {
-                Names.Add(NewNameEntry);
+                GlobalConfig.PlayersFromLastSession.Add(NewNameEntry);
                 NewNameEntry = string.Empty;
             }
         }
 
-        private void LoadSampleData()
+        private async void ExecuteNextCommand()
         {
-            Names.Add("Matt");
-            Names.Add("Tim");
-            Names.Add("Sue");
+            await GlobalConfig.SavePlayersFromLastSession();
         }
     }
 }

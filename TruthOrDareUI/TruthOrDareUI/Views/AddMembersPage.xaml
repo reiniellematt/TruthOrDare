@@ -15,7 +15,6 @@
                         <ViewCell.View>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <Label HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="White" Text="{Binding}"/>
-                                <Button HorizontalOptions="Fill" WidthRequest="20" HeightRequest="20" BorderRadius="10" BackgroundColor="{StaticResource SecondaryTextColor}" TextColor="White" Text="X"/>
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>
@@ -28,7 +27,7 @@
             <Button Command="{Binding AddCommand}" HorizontalOptions="End" Text="Add"/>
         </StackLayout>
         
-        <Button HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Text="NEXT"/>
+        <Button Command="{Binding NextCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Text="NEXT"/>
 
     </StackLayout>
 

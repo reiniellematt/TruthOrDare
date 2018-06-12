@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,9 @@ namespace TruthOrDareUI
         private static readonly string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Config.txt");
 
         public static int MinutesToCompleteChallenge = 0, SecondsBeforeReveal = 0;
-        public static List<string> PlayersFromLastSession = new List<string>();
+        public static ObservableCollection<string> PlayersFromLastSession = new ObservableCollection<string>();
 
-        public static void PrepareContents()
+        public static void PrepareGameConfig()
         {
             List<string> output = new List<string>();
 
@@ -38,31 +39,37 @@ namespace TruthOrDareUI
 
             if (contents.Length > 2)
             {
-                for (int i = 3; i < contents.Length; i++)
+                for (int i = 2; i < contents.Length; i++)
                 {
                     PlayersFromLastSession.Add(contents[i]);
                 }
             }
         }
 
-        public static async Task SaveConfig(string minutes = null, string seconds = null, List<string> names = null)
+        public static async Task SaveTimeConfig(string minutes, string seconds)
         {
             List<string> contents = new List<string>();
 
-            if (minutes.Length > 0)
-            {
-                contents.Add(minutes);
-            }
+            contents.Add(minutes);
+            contents.Add(seconds);
+            contents.AddRange(PlayersFromLastSession);
 
-            if (seconds.Length > 0)
+            using (StreamWriter sw = new StreamWriter(filePath, false))
             {
-                contents.Add(seconds);
+                foreach (string content in contents)
+                {
+                    await sw.WriteLineAsync(content);
+                }
             }
+        }
 
-            if (names != null)
-            {
-                contents.AddRange(names);
-            }
+        public static async Task SavePlayersFromLastSession()
+        {
+            List<string> contents = new List<string>();
+
+            contents.Add(MinutesToCompleteChallenge.ToString());
+            contents.Add(SecondsBeforeReveal.ToString());
+            contents.AddRange(GlobalConfig.PlayersFromLastSession);
 
             using (StreamWriter sw = new StreamWriter(filePath, false))
             {

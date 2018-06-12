@@ -49,9 +49,7 @@ namespace TruthOrDareUI.ViewModels
                 return;
             }
 
-            await GlobalConfig.SaveConfig(minutes: MinutesToCompleteChallengeEntry
-                    , seconds: SecondsBeforeRevealEntry
-                    , names: null);
+            await GlobalConfig.SaveTimeConfig(MinutesToCompleteChallengeEntry, SecondsBeforeRevealEntry);
 
             GlobalConfig.MinutesToCompleteChallenge = int.Parse(MinutesToCompleteChallengeEntry);
             GlobalConfig.SecondsBeforeReveal = int.Parse(SecondsBeforeRevealEntry);

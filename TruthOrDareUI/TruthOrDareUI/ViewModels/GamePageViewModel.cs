@@ -7,14 +7,22 @@ using System.Linq;
 
 namespace TruthOrDareUI.ViewModels
 {
-	public class GamePageViewModel : BindableBase
-	{
+    public class GamePageViewModel : BindableBase
+    {
         private INavigationService _navigationService;
+        private CustomTimer _timer;
 
+        private double _timeLeft = GlobalConfig.SecondsBeforeReveal;
+        private string _time;
         private bool _showStartBtn;
         private DelegateCommand _cancelCommand;
         private DelegateCommand _startCommand;
 
+        public string Time
+        {
+            get { return _time; }
+            set { SetProperty(ref _time, value); }
+        }
         public bool ShowStartBtn
         {
             get { return _showStartBtn; }
@@ -30,18 +38,33 @@ namespace TruthOrDareUI.ViewModels
         public GamePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+            _timer = new CustomTimer(TimerTick);
+            Time = "START";
             ShowStartBtn = true;
         }
 
         private void ExecuteStartCommand()
         {
-            ShowStartBtn = false;
-            RaisePropertyChanged("ShowPicker");
+            Time = _timeLeft.ToString();
+            _timer.Start();
         }
 
         private async void ExecuteCancelCommand()
         {
             await _navigationService.GoBackAsync();
+        }
+
+        private void TimerTick()
+        {
+            _timeLeft--;
+            Time = _timeLeft.ToString();
+
+            if (_timeLeft == 0)
+            {
+                _timer.Stop();
+                ShowStartBtn = false;
+                RaisePropertyChanged("ShowPicker");
+            }
         }
     }
 }

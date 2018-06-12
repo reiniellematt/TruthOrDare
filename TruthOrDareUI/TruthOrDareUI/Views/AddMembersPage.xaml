@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TruthOrDareUI.Views.AddMembersPage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout>
+        
+        <ListView ItemsSource="{Binding Names}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.View>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <Label HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="White" Text="{Binding}"/>
+                                <Button HorizontalOptions="Fill" WidthRequest="20" HeightRequest="20" BorderRadius="10" BackgroundColor="{StaticResource SecondaryTextColor}" TextColor="White" Text="X"/>
+                            </StackLayout>
+                        </ViewCell.View>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Entry HorizontalOptions="FillAndExpand" Placeholder="Enter name here" Text="{Binding NewNameEntry}"/>
+            <Button Command="{Binding AddCommand}" HorizontalOptions="End" Text="Add"/>
+        </StackLayout>
+        
+        <Button HorizontalOptions="FillAndExpand" VerticalOptions="Fill" Text="NEXT"/>
+
+    </StackLayout>
+
+</ContentPage>

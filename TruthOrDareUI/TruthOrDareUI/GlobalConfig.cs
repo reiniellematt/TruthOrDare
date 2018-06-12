@@ -9,16 +9,16 @@ namespace TruthOrDareUI
 {
     public static class GlobalConfig
     {
-        private static readonly string filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Config.txt");
+        private static readonly string _filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Config.txt");
+        private static readonly Random _generator = new Random();
 
         public static int MinutesToCompleteChallenge = 0, SecondsBeforeReveal = 0;
         public static ObservableCollection<string> PlayersFromLastSession = new ObservableCollection<string>();
-
         public static void PrepareGameConfig()
         {
             List<string> output = new List<string>();
 
-            if (!File.Exists(filePath))
+            if (!File.Exists(_filePath))
             {
                 List<string> config = new List<string>
                 {
@@ -29,10 +29,10 @@ namespace TruthOrDareUI
                 MinutesToCompleteChallenge = 2;
                 SecondsBeforeReveal = 5;
 
-                File.WriteAllLines(filePath, config);
+                File.WriteAllLines(_filePath, config);
             }
 
-            string[] contents = File.ReadAllLines(filePath);
+            string[] contents = File.ReadAllLines(_filePath);
 
             MinutesToCompleteChallenge = int.Parse(contents[0]);
             SecondsBeforeReveal = int.Parse(contents[1]);
@@ -45,7 +45,6 @@ namespace TruthOrDareUI
                 }
             }
         }
-
         public static async Task SaveTimeConfig(string minutes, string seconds)
         {
             List<string> contents = new List<string>();
@@ -54,7 +53,7 @@ namespace TruthOrDareUI
             contents.Add(seconds);
             contents.AddRange(PlayersFromLastSession);
 
-            using (StreamWriter sw = new StreamWriter(filePath, false))
+            using (StreamWriter sw = new StreamWriter(_filePath, false))
             {
                 foreach (string content in contents)
                 {
@@ -62,7 +61,6 @@ namespace TruthOrDareUI
                 }
             }
         }
-
         public static async Task SavePlayersFromLastSession()
         {
             List<string> contents = new List<string>();
@@ -71,12 +69,25 @@ namespace TruthOrDareUI
             contents.Add(SecondsBeforeReveal.ToString());
             contents.AddRange(GlobalConfig.PlayersFromLastSession);
 
-            using (StreamWriter sw = new StreamWriter(filePath, false))
+            using (StreamWriter sw = new StreamWriter(_filePath, false))
             {
                 foreach (string content in contents)
                 {
                     await sw.WriteLineAsync(content);
                 }
+            }
+        }
+        public static string GenerateName()
+        {
+            lock (_generator)
+            {
+                string output = string.Empty;
+
+                string generatedName = PlayersFromLastSession[_generator.Next(0, PlayersFromLastSession.Count)];
+
+                output = string.IsNullOrWhiteSpace(generatedName) ? "No player's yet" : generatedName;
+
+                return output;
             }
         }
     }

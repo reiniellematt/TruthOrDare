@@ -10,7 +10,7 @@
 
         <Button Command="{Binding CancelCommand}" HorizontalOptions="Start" BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="20" FontAttributes="None" Text="Cancel"/>
 
-        <Label HorizontalOptions="Center" FontSize="20" Text="Let's start..." Margin="0,72,0,38"/>
+        <Label HorizontalOptions="Center" FontSize="20" Text="{Binding SelectedName}" Margin="0,72,0,38"/>
 
         <Button Command="{Binding StartCommand}" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" BorderRadius="75" IsVisible="{Binding ShowStartBtn}" FontSize="28" Text="{Binding Time}"/>
 

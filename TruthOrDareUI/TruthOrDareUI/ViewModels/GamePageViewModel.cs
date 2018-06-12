@@ -14,6 +14,7 @@ namespace TruthOrDareUI.ViewModels
 
         private double _timeLeft = GlobalConfig.SecondsBeforeReveal;
         private string _time;
+        private string _selectedName;
         private bool _showStartBtn;
         private DelegateCommand _cancelCommand;
         private DelegateCommand _startCommand;
@@ -22,6 +23,11 @@ namespace TruthOrDareUI.ViewModels
         {
             get { return _time; }
             set { SetProperty(ref _time, value); }
+        }
+        public string SelectedName
+        {
+            get { return _selectedName; }
+            set { SetProperty(ref _selectedName, value); }
         }
         public bool ShowStartBtn
         {
@@ -40,6 +46,7 @@ namespace TruthOrDareUI.ViewModels
             _navigationService = navigationService;
             _timer = new CustomTimer(TimerTick);
             Time = "START";
+            SelectedName = "Let's start...";
             ShowStartBtn = true;
         }
 
@@ -64,6 +71,8 @@ namespace TruthOrDareUI.ViewModels
                 _timer.Stop();
                 ShowStartBtn = false;
                 RaisePropertyChanged("ShowPicker");
+
+                SelectedName = GlobalConfig.GenerateName();
             }
         }
     }

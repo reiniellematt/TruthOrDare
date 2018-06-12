@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TruthOrDareUI.Views.GamePage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout>
+
+        <Button Command="{Binding CancelCommand}" HorizontalOptions="Start" BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="20" FontAttributes="None" Text="Cancel"/>
+
+        <Label HorizontalOptions="Center" FontSize="20" Text="Let's start..." Margin="0,72,0,38"/>
+
+        <Button Command="{Binding StartCommand}" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" BorderRadius="75" IsVisible="{Binding ShowStartBtn}" FontSize="28" Text="START"/>
+
+        <StackLayout x:Name="TruthOrDarePicker" Orientation="Horizontal" IsVisible="{Binding ShowPicker}">
+            <Button WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" BorderRadius="50" Text="Truth"/>
+            <Button WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" BorderRadius="50" Text="Dare"/>
+        </StackLayout>
+    </StackLayout> 
+
+</ContentPage>

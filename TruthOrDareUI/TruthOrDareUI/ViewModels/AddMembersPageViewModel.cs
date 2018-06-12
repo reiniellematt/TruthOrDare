@@ -45,6 +45,7 @@ namespace TruthOrDareUI.ViewModels
         private async void ExecuteNextCommand()
         {
             await GlobalConfig.SavePlayersFromLastSession();
+            await _navigationService.NavigateAsync("GamePage");
         }
     }
 }

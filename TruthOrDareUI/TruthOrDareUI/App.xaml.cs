@@ -35,6 +35,7 @@ namespace TruthOrDareUI
             containerRegistry.RegisterForNavigation<AboutPage>();
             containerRegistry.RegisterForNavigation<SettingsPage>();
             containerRegistry.RegisterForNavigation<AddMembersPage>();
+            containerRegistry.RegisterForNavigation<GamePage>();
         }
     }
 }

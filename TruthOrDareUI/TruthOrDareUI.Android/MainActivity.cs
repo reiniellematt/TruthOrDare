@@ -6,7 +6,7 @@ using Prism.Ioc;
 
 namespace TruthOrDareUI.Droid
 {
-    [Activity(Label = "Truth or Dare", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "@string/app_name", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
@@ -29,4 +29,3 @@ namespace TruthOrDareUI.Droid
         }
     }
 }
-

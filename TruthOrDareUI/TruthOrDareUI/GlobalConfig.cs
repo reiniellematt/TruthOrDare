@@ -83,9 +83,14 @@ namespace TruthOrDareUI
             {
                 string output = string.Empty;
 
-                string generatedName = PlayersFromLastSession[_generator.Next(0, PlayersFromLastSession.Count)];
-
-                output = string.IsNullOrWhiteSpace(generatedName) ? "No player's yet" : generatedName;
+                try
+                {
+                    output = PlayersFromLastSession[_generator.Next(0, PlayersFromLastSession.Count)];
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    output = "No players yet";
+                }
 
                 return output;
             }

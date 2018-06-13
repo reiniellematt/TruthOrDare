@@ -23,7 +23,7 @@
             <Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource MainButtonColor}"/>
                 <Setter Property="TextColor" Value="White"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="FontSize" Value="Large"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
 

@@ -8,13 +8,13 @@
 
     <StackLayout>
 
-        <Button Command="{Binding CancelCommand}" HorizontalOptions="Start" BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="20" FontAttributes="None" Text="Cancel"/>
+        <Button Command="{Binding CancelCommand}" HorizontalOptions="Start" BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="Medium" FontAttributes="None" Text="Cancel"/>
 
-        <Label HorizontalOptions="Center" TextColor="{StaticResource SecondaryTextColor}" FontSize="24" Text="Truth" Margin="0,48,0,0"/>
+        <Label HorizontalOptions="Center" TextColor="{StaticResource SecondaryTextColor}" FontSize="Medium" Text="Truth" Margin="0,48,0,0"/>
 
-        <Label HorizontalOptions="Center" FontSize="48" Text="2:00" Margin="0,36,0,0"/>
+        <Label HorizontalOptions="Center" FontSize="Large" Text="{Binding Time}" Margin="0,36,0,0"/>
 
-        <Button Command="{Binding ReturnCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Text="RETURN" Margin="0,0,0,12"/>
+        <Button Command="{Binding MainButtonCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Text="{Binding MainButtonText}" Margin="0,0,0,12"/>
 
     </StackLayout>
     

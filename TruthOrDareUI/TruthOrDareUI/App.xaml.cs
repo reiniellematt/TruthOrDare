@@ -20,7 +20,7 @@ namespace TruthOrDareUI
             InitializeComponent();
             GlobalConfig.PrepareGameConfig();
 
-            await NavigationService.NavigateAsync("NavigationPage/ChallengePage");
+            await NavigationService.NavigateAsync("NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)

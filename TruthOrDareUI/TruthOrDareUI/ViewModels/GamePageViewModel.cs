@@ -44,16 +44,28 @@ namespace TruthOrDareUI.ViewModels
         public GamePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            _timer = new CustomTimer(TimerTick);
             Time = "START";
-            SelectedName = "Let's start...";
+
+            if (GlobalConfig.PlayersFromLastSession.Count > 0)
+            {
+                SelectedName = "Let's start...";
+                _timer = new CustomTimer(TimerTick);
+            }
+            else
+            {
+                SelectedName = "No players yet!";
+            }
+
             ShowStartBtn = true;
         }
 
         private void ExecuteStartCommand()
         {
-            Time = _timeLeft.ToString();
-            _timer.Start();
+            if (_timer != null)
+            {
+                Time = _timeLeft.ToString();
+                _timer.Start();
+            }
         }
 
         private async void ExecuteCancelCommand()

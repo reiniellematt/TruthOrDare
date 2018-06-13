@@ -10,7 +10,7 @@
 
         <Button Command="{Binding CancelCommand}" HorizontalOptions="Start" BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="Medium" FontAttributes="None" Text="Cancel"/>
 
-        <Label HorizontalOptions="Center" TextColor="{StaticResource SecondaryTextColor}" FontSize="Medium" Text="Truth" Margin="0,48,0,0"/>
+        <Label HorizontalOptions="Center" TextColor="{StaticResource SecondaryTextColor}" FontSize="Medium" Text="{Binding ChallengeType}" Margin="0,48,0,0"/>
 
         <Label HorizontalOptions="Center" FontSize="Large" Text="{Binding Time}" Margin="0,36,0,0"/>
 

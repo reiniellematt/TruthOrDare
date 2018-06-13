@@ -12,6 +12,7 @@ namespace TruthOrDareUI
         private static readonly string _filePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Personal), "Config.txt");
         private static readonly Random _generator = new Random();
 
+        public static string ChallengeType = string.Empty;
         public static int MinutesToCompleteChallenge = 0, SecondsBeforeReveal = 0;
         public static ObservableCollection<string> PlayersFromLastSession = new ObservableCollection<string>();
         public static void PrepareGameConfig()

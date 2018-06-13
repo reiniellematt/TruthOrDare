@@ -15,8 +15,8 @@
         <Button Command="{Binding StartCommand}" WidthRequest="150" HeightRequest="150" HorizontalOptions="Center" BorderRadius="75" IsVisible="{Binding ShowStartBtn}" FontSize="28" Text="{Binding Time}"/>
 
         <StackLayout x:Name="TruthOrDarePicker" Orientation="Horizontal" IsVisible="{Binding ShowPicker}">
-            <Button WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" BorderRadius="50" Text="Truth"/>
-            <Button WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" BorderRadius="50" Text="Dare"/>
+            <Button Command="{Binding ChallengeCommand}" CommandParameter="Truth" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" BorderRadius="50" Text="Truth"/>
+            <Button Command="{Binding ChallengeCommand}" CommandParameter="Dare" WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" BorderRadius="50" Text="Dare"/>
         </StackLayout>
     </StackLayout>
 

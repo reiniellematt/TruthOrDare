@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using Prism.Services;
@@ -14,9 +15,10 @@ namespace TruthOrDareUI.ViewModels
         private readonly IPageDialogService _dialogService;
         private CustomTimer _timer;
         private bool _hasStarted = false;
-        private int mins = 0, secs = 2;
+        private int _mins = GlobalConfig.MinutesToCompleteChallenge, _secs = 0;
 
         private string _mainButtonText;
+        private string _challengeType;
         private DelegateCommand _cancelCommand;
         private DelegateCommand _mainButtonCommand;
 
@@ -25,9 +27,14 @@ namespace TruthOrDareUI.ViewModels
             get { return _mainButtonText; }
             set { SetProperty(ref _mainButtonText, value); }
         }
+        public string ChallengeType
+        {
+            get { return _challengeType; }
+            set { SetProperty(ref _challengeType, value); }
+        }
         public string Time
         {
-            get { return $"{mins}:{secs:00}"; }
+            get { return $"{_mins}:{_secs:00}"; }
         }
         public DelegateCommand CancelCommand => _cancelCommand ?? (_cancelCommand = new DelegateCommand(ExecuteCancelCommand));
         public DelegateCommand MainButtonCommand => _mainButtonCommand ?? (_mainButtonCommand = new DelegateCommand(ExecuteMainButtonCommand));
@@ -37,6 +44,7 @@ namespace TruthOrDareUI.ViewModels
             _navigationService = navigationService;
             _dialogService = dialogService;
 
+            ChallengeType = GlobalConfig.ChallengeType;
             _hasStarted = false;
             _timer = new CustomTimer(TimerTick);
             MainButtonText = "START";
@@ -66,15 +74,15 @@ namespace TruthOrDareUI.ViewModels
 
         private void TimerTick()
         {
-            secs--;
+            _secs--;
 
-            if (secs < 0)
+            if (_secs < 0)
             {
-                mins--;
-                secs = 59;
+                _mins--;
+                _secs = 59;
             }
 
-            if (mins == 0 && secs == 0)
+            if (_mins == 0 && _secs == 0)
             {
                 _timer.Stop();
 

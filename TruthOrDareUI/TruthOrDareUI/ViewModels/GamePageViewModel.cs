@@ -1,4 +1,5 @@
 ﻿using Prism.Commands;
+using Prism.Events;
 using Prism.Mvvm;
 using Prism.Navigation;
 using System;
@@ -18,6 +19,7 @@ namespace TruthOrDareUI.ViewModels
         private bool _showStartBtn;
         private DelegateCommand _cancelCommand;
         private DelegateCommand _startCommand;
+        private DelegateCommand<string> _challengeCommand;
 
         public string Time
         {
@@ -40,10 +42,12 @@ namespace TruthOrDareUI.ViewModels
         }
         public DelegateCommand CancelCommand => _cancelCommand ?? (_cancelCommand = new DelegateCommand(ExecuteCancelCommand));
         public DelegateCommand StartCommand => _startCommand ?? (_startCommand = new DelegateCommand(ExecuteStartCommand));
+        public DelegateCommand<string> ChallengeCommand => _challengeCommand ?? (_challengeCommand = new DelegateCommand<string>(ExecuteChallengeCommand));
 
         public GamePageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+
             Time = "START";
 
             if (GlobalConfig.PlayersFromLastSession.Count > 0)
@@ -71,6 +75,12 @@ namespace TruthOrDareUI.ViewModels
         private async void ExecuteCancelCommand()
         {
             await _navigationService.GoBackAsync();
+        }
+
+        private async void ExecuteChallengeCommand(string choice)
+        {
+            GlobalConfig.ChallengeType = choice;
+            await _navigationService.NavigateAsync("ChallengePage");
         }
 
         private void TimerTick()

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
+             prism:ViewModelLocator.AutowireViewModel="True"
+             x:Class="TruthOrDareUI.Views.ChallengePage"
+             NavigationPage.HasNavigationBar="False">
+
+    <StackLayout>
+
+        <Button Command="{Binding CancelCommand}" HorizontalOptions="Start" BackgroundColor="Transparent" TextColor="{StaticResource SecondaryTextColor}" FontSize="20" FontAttributes="None" Text="Cancel"/>
+
+        <Label HorizontalOptions="Center" TextColor="{StaticResource SecondaryTextColor}" FontSize="24" Text="Truth" Margin="0,48,0,0"/>
+
+        <Label HorizontalOptions="Center" FontSize="48" Text="2:00" Margin="0,36,0,0"/>
+
+        <Button Command="{Binding ReturnCommand}" HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand" Text="RETURN" Margin="0,0,0,12"/>
+
+    </StackLayout>
+    
+</ContentPage>

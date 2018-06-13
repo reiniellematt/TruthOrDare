@@ -18,6 +18,6 @@
             <Button WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" BorderRadius="50" Text="Truth"/>
             <Button WidthRequest="100" HeightRequest="100" HorizontalOptions="CenterAndExpand" BorderRadius="50" Text="Dare"/>
         </StackLayout>
-    </StackLayout> 
+    </StackLayout>
 
 </ContentPage>

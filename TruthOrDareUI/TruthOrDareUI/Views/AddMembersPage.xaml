@@ -4,17 +4,19 @@
              xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
              prism:ViewModelLocator.AutowireViewModel="True"
              x:Class="TruthOrDareUI.Views.AddMembersPage"
-             NavigationPage.HasNavigationBar="False">
+             NavigationPage.HasNavigationBar="False"
+             x:Name="AddMembersPage">
 
     <StackLayout>
         
-        <ListView ItemsSource="{Binding Names}">
+        <ListView x:Name="NamesList" ItemsSource="{Binding Names}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
                         <ViewCell.View>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <Label HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="White" Text="{Binding}"/>
+                                <Button Command="{Binding BindingContext.RemoveCommand, Source={x:Reference NamesList}}" CommandParameter="{Binding .}" WidthRequest="20" HeightRequest="20" BorderRadius="10" BackgroundColor="{StaticResource SecondaryTextColor}"/>
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>

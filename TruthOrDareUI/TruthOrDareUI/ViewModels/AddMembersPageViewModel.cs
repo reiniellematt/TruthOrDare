@@ -15,6 +15,7 @@ namespace TruthOrDareUI.ViewModels
         private string _newNameEntry;
         private DelegateCommand _addCommand;
         private DelegateCommand _nextCommand;
+        private DelegateCommand<string> _removeCommand;
 
         public ObservableCollection<string> Names
         {
@@ -27,6 +28,7 @@ namespace TruthOrDareUI.ViewModels
         }
         public DelegateCommand AddCommand => _addCommand ?? (_addCommand = new DelegateCommand(ExecuteAddCommand));
         public DelegateCommand NextCommand => _nextCommand ?? (_nextCommand = new DelegateCommand(ExecuteNextCommand));
+        public DelegateCommand<string> RemoveCommand => _removeCommand ?? (_removeCommand = new DelegateCommand<string>(ExecuteRemoveCommand));
 
         public AddMembersPageViewModel(INavigationService navigationService)
         {
@@ -46,6 +48,12 @@ namespace TruthOrDareUI.ViewModels
         {
             await GlobalConfig.SavePlayersFromLastSession();
             await _navigationService.NavigateAsync("GamePage");
+        }
+
+        private void ExecuteRemoveCommand(string selectedName)
+        {
+            GlobalConfig.PlayersFromLastSession.Remove(selectedName);
+            RaisePropertyChanged("Names");
         }
     }
 }

@@ -16,13 +16,18 @@
                         <ViewCell.View>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                                 <Label HorizontalOptions="StartAndExpand" FontSize="Medium" TextColor="White" Text="{Binding}"/>
-                                <Button Command="{Binding BindingContext.RemoveCommand, Source={x:Reference NamesList}}" CommandParameter="{Binding .}" WidthRequest="20" HeightRequest="20" BorderRadius="10" BackgroundColor="{StaticResource SecondaryTextColor}"/>
+                                <Image Source="xbutton.png">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding BindingContext.RemoveCommand, Source={x:Reference       NamesList}}" CommandParameter="{Binding}"/>
+                                    </Image.GestureRecognizers>
+                                </Image>
                             </StackLayout>
                         </ViewCell.View>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
 
         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
             <Entry HorizontalOptions="FillAndExpand" Placeholder="Enter name here" Text="{Binding NewNameEntry}"/>
